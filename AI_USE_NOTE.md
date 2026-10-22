@@ -22,3 +22,6 @@ The command interpreter is a limited keyword parser and may misunderstand natura
 
 ## Follow-up improvement
 After user feedback, ChatGPT corrected the wrong-recipient bug by resolving exact shirt numbers, added instructions for teammates running off the ball, added corner/free-kick/penalty/defensive recovery scenes, and improved animation by interpolating actual positions. This is still a limited rules-based game, not general language understanding.
+
+## User-directed revision: October 22
+The user reported mismatched block visuals, failed run language, requested mouse-drawn shot directions, a decorative diving goalkeeper and a real-time countdown. ChatGPT extended the rule-based engine and pitch display. There is no AI inference service: input is not guaranteed to be understood like ChatGPT. The student should verify behavior and screenshots in a browser before submitting.
