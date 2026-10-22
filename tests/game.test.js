@@ -3,17 +3,17 @@ const assert = require('node:assert/strict');
 const Game = require('../dist/game.js');
 const scenarios = require('../dist/data.js');
 
-test('Striker filter creates four paired rounds', () => {
+test('Striker filter creates eight paired rounds', () => {
  const state = Game.create(scenarios, 'Striker');
- assert.equal(state.rounds.length, 4);
+ assert.equal(state.rounds.length, 8);
  assert.equal(state.rounds[0].context, 'lead');
  assert.equal(state.rounds[1].context, 'trail');
  assert.ok(state.rounds.every(r => r.scenario.role === 'Striker'));
 });
 
-test('All roles includes six situations twice', () => {
+test('All roles includes ten situations twice', () => {
  const state = Game.create(scenarios, 'All roles');
- assert.equal(state.rounds.length, 12);
+ assert.equal(state.rounds.length, 20);
 });
 
 test('Leading versus trailing changes the value of a forward pass', () => {

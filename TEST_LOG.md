@@ -24,3 +24,6 @@ The same behavior is checked by `tests/simulation.test.js`. Original v1 logic te
 **Manual checks:** Load `dist/index.html`; choose Striker / One more touch? / Trailing; type “căn ngang vào trong”; confirm ball moves to center teammate; then “shoot”; confirm ball goes goalward and the GOAL screen appears. Test invalid text, reset, hold until full time, position changes and a narrow viewport.
 
 Do not represent unverified browser checks as passed.
+
+## Follow-up checks (October 22, 2026)
+Additional JavaScript-runtime checks passed for exact recipient #2, off-ball run by #1, subsequent pass to #1, and presence of corner/free-kick/penalty scenarios. Browser animation and GitHub Actions results remain unverified.

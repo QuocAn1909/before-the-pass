@@ -26,3 +26,10 @@ const SCENARIOS = [
   {label:'Launch a speculative shot from your own half',target:[50,3],kind:'shot',lead:{points:0,text:'A speculative attempt from this distance is likely to surrender possession with little benefit.'},trail:{points:0,text:'Even when behind, this is a very low-quality attempt. Moving into available space is a stronger option.'}}]}
 ];
 if (typeof module !== 'undefined') module.exports = SCENARIOS;
+
+SCENARIOS.push(
+{id:'corner-kick',kind:'corner',role:'Striker',title:'Last-minute corner kick.',subtitle:'You stand by the corner flag. Two teammates attack the penalty area, while defenders guard the near post.',you:[94,8],mates:[[44,23],[58,29]],opponents:[[48,17],[60,18],[76,22]],options:[]},
+{id:'direct-free-kick',kind:'freekick',role:'Midfielder',title:'Free kick at the edge.',subtitle:'A direct free kick near the penalty box. Your teammates are ready for a short pass or a shot.',you:[48,38],mates:[[35,23],[70,27]],opponents:[[44,23],[50,23],[56,23]],options:[]},
+{id:'penalty-kick',kind:'penalty',role:'Striker',title:'The penalty spot.',subtitle:'One chance from twelve yards. Choose where to shoot — left, right or center.',you:[50,17],mates:[[35,40],[65,40]],opponents:[[30,24],[70,24],[50,5]],options:[]},
+{id:'defensive-recovery',kind:'open',role:'Defender',title:'A defender makes the run.',subtitle:'You control the ball while your teammate needs to push into space. Call the runner and pick your next pass.',you:[37,72],mates:[[60,58],[26,61]],opponents:[[43,51],[73,48],[51,35]],options:[]}
+);

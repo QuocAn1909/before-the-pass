@@ -39,6 +39,20 @@ function paintPossession(){
 }
 function positions(){for(const p of game.players){const el=$('piece-'+p.id);if(el)el.setAttribute('transform','translate('+p.pos[0]+' '+p.pos[1]+')');}}
 function moveBall(p){$('ball').setAttribute('transform','translate('+p[0]+' '+p[1]+')');}
+function animatePlay(before,ballBefore){
+ const dest=game.players.map(p=>({id:p.id,to:[...p.pos],from:before[p.id]||[...p.pos]}));
+ const end=[...game.ball],start=performance.now(),duration=900;
+ return new Promise(resolve=>{
+  function tick(now){
+   const t=Math.min(1,(now-start)/duration),e=t*t*(3-2*t);
+   for(const p of dest){const el=$('piece-'+p.id);if(el)el.setAttribute('transform','translate('+(p.from[0]+(p.to[0]-p.from[0])*e)+' '+(p.from[1]+(p.to[1]-p.from[1])*e)+')');}
+   const bx=ballBefore[0]+(end[0]-ballBefore[0])*e,by=ballBefore[1]+(end[1]-ballBefore[1])*e-Math.sin(Math.PI*t)*(end[0]!==ballBefore[0]||end[1]!==ballBefore[1]?2.3:0);
+   moveBall([bx,by]);
+   if(t<1)requestAnimationFrame(tick);else resolve();
+  }
+  requestAnimationFrame(tick);
+ });
+}
 function begin(){
  busy=false;setupScenarios();
  loadSelected();
@@ -69,13 +83,13 @@ function finish(){
 async function submit(e){
  e.preventDefault();if(busy||game.finished)return;
  const words=$('command').value.trim();if(!words){$('command').focus();return;}
+ const before=Object.fromEntries(game.players.map(p=>[p.id,[...p.pos]])),ballBefore=[...game.ball];
  const outcome=SoccerEngine.play(game,words);
  if(!outcome.ok){$('commentaryText').textContent=outcome.message;$('status').textContent='TRY A DIFFERENT COMMAND';return;}
  busy=true;$('go').disabled=true;$('command').disabled=true;
  $('status').textContent='PLAY IN MOTION…';
  $('commentaryText').textContent='The play unfolds…';
- positions();moveBall(outcome.to); // CSS transitions animate shirts and the soccer ball
- await new Promise(resolve=>setTimeout(resolve,1100));
+ await animatePlay(before,ballBefore);
  if(outcome.event==='pass'||outcome.event==='dribble'){ // Receiving player controls ball
   moveBall(game.ball);paintPossession();
  }

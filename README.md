@@ -6,8 +6,8 @@
 Beginner college soccer players need a safe way to rehearse game decisions under time pressure. This is a **rule-based teaching prototype**, not a real-time coaching system.
 
 ## Three features
-1. **Set the scene:** Choose Striker / Midfielder / Defender, one of two scenarios, and whether you're leading 1–0 or trailing 0–1 with 55 seconds remaining.
-2. **Type a decision and watch it happen:** No A/B/C answers. Enter commands in English or Vietnamese. The ball and shirt-shaped players animate, defenders shift to pressure the ball, and possession changes after a completed pass. Try “cross into the box”, “pass wide”, “pass back”, “shoot”, “dribble”, “hold”, “căn ngang”, “chuyền vào trong”, “sút”.
+1. **Set the scene:** Choose Striker / Midfielder / Defender, multiple scenarios including open play, corner kicks, a free kick, penalty, and a defensive run, and whether you're leading 1–0 or trailing 0–1 with 55 seconds remaining.
+2. **Type a decision and watch it happen:** No A/B/C answers. Enter commands in English or Vietnamese. The ball and shirt-shaped players animate, defenders shift to pressure the ball, and possession changes after a completed pass. Explicit jerseys are honored: “pass to #2” targets player #2, and “tell #1 to run into the box” moves player #1 off-ball. Try “cross into the box”, “pass wide”, “pass back”, “shoot”, “dribble”, “hold”, “căn ngang”, “chuyền vào trong”, “sút”.
 3. **Chain decisions:** After a pass, direct the receiver's next action. A scenario ends on a goal, loss of possession or full time. Play-by-play commentary records the sequence.
 
 ## Run
@@ -31,4 +31,4 @@ Run `node --test tests/*.test.js` using Node.js 18+ to run the original and new 
 - `dist/app.js`, `dist/game.js`, `tests/game.test.js` — archived source/tests for earlier version; not loaded by current page.
 
 ## Limitations
-The parser recognizes a fixed vocabulary and does not understand every human instruction. Movement and scoring use simplified deterministic rules, not physics or a live AI model. There are no goalkeeper mechanics or full team simulations. Possession loss ends the current attacking sequence; outcomes depend on handcrafted rules and are not realistic match forecasts. Time advances per action rather than by real-world seconds. No live data, accounts or analytics. The current match state resets on refresh.
+The parser supports more specific teammate commands but cannot truly reason about arbitrary free-form requests. A real AI backend would be required for unrestricted natural-language tactical understanding. The parser recognizes a fixed vocabulary and does not understand every human instruction. Movement and scoring use simplified deterministic rules, not physics or a live AI model. There are no goalkeeper mechanics or full team simulations. Possession loss ends the current attacking sequence; outcomes depend on handcrafted rules and are not realistic match forecasts. Time advances per action rather than by real-world seconds. No live data, accounts or analytics. The current match state resets on refresh.
