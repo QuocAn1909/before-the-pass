@@ -11,9 +11,9 @@ test('Striker filter creates eight paired rounds', () => {
  assert.ok(state.rounds.every(r => r.scenario.role === 'Striker'));
 });
 
-test('All roles includes ten situations twice', () => {
+test('All roles includes eleven situations twice', () => {
  const state = Game.create(scenarios, 'All roles');
- assert.equal(state.rounds.length, 20);
+ assert.equal(state.rounds.length, 22);
 });
 
 test('Leading versus trailing changes the value of a forward pass', () => {
