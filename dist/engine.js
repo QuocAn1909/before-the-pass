@@ -44,7 +44,7 @@
    else {event='pass';comment=cmd.target==='inside'?'A sharp ball into the middle. Your teammate receives it — what next?':cmd.target==='wide'?'The ball travels wide. The winger takes a touch — make the next decision.':cmd.target==='back'?'You recycle possession. A defender presses forward as the seconds tick down.':'Good connection. The receiver controls the pass and looks up.';}
   } else if(cmd.type==='shoot'){
    to=[50,3];step=9;
-   const nearGoal=from[1]<=43;const blocked=closest(from)<10&&from[1]>18;
+   const nearGoal=from[1]<=43;const blocked=closest(from)<6&&from[1]>18;
    if(nearGoal&&!blocked){event='goal';comment='GOAL! The ball beats the keeper and hits the net.';}
    else {event='turnover';comment=nearGoal?'A defender blocks the shot and clears the ball.':'Too far out. The hopeful shot is saved, and possession is lost.';}
   } else if(cmd.type==='dribble'){
