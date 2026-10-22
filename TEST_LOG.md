@@ -1,18 +1,18 @@
 # Test Log — Before the Pass
 
 ## Automated cases
-Run `node --test tests/game.test.js` from the repository root. These eight automated checks are in the repository; mark actual results after executing them.
+Eight equivalent assertions were executed directly against the repository's current `dist/game.js` and `dist/data.js` in a JavaScript runtime on 2026-10-21; all eight passed. The committed Node test file mirrors these cases. **The GitHub Actions / `node --test` runner has not yet been observed executing**, so its result must not be represented as verified.
 
 | # | Test | Expected outcome | Status |
 |---|---|---|---|
-| 1 | Striker filter | Exactly four rounds, with leading/trailing pairs | Pending local execution |
-| 2 | All roles | Twelve rounds across six situations | Pending local execution |
-| 3 | Context-sensitive score | Same pass gets 1 point while leading, 2 while trailing | Pending local execution |
-| 4 | Double click / repeated answer | Second answer rejected; score does not change | Pending local execution |
-| 5 | Invalid answer index (failure/edge case) | -1, 3, and decimal index rejected without score changes | Pending local execution |
-| 6 | Next without answer (failure case) | Round does not advance | Pending local execution |
-| 7 | Answer beyond end | No additional points or rounds | Pending local execution |
-| 8 | Explanations | Every option has feedback for both contexts | Pending local execution |
+| 1 | Striker filter | Exactly four rounds, with leading/trailing pairs | PASS — evaluated using the repository's current game.js and data.js in a JavaScript runtime (2026-10-21) |
+| 2 | All roles | Twelve rounds across six situations | PASS — evaluated using the repository's current game.js and data.js in a JavaScript runtime (2026-10-21) |
+| 3 | Context-sensitive score | Same pass gets 1 point while leading, 2 while trailing | PASS — evaluated using the repository's current game.js and data.js in a JavaScript runtime (2026-10-21) |
+| 4 | Double click / repeated answer | Second answer rejected; score does not change | PASS — evaluated using the repository's current game.js and data.js in a JavaScript runtime (2026-10-21) |
+| 5 | Invalid answer index (failure/edge case) | -1, 3, and decimal index rejected without score changes | PASS — evaluated using the repository's current game.js and data.js in a JavaScript runtime (2026-10-21) |
+| 6 | Next without answer (failure case) | Round does not advance | PASS — evaluated using the repository's current game.js and data.js in a JavaScript runtime (2026-10-21) |
+| 7 | Answer beyond end | No additional points or rounds | PASS — evaluated using the repository's current game.js and data.js in a JavaScript runtime (2026-10-21) |
+| 8 | Explanations | Every option has feedback for both contexts | PASS — evaluated using the repository's current game.js and data.js in a JavaScript runtime (2026-10-21) |
 
 ## Manual browser checklist
 1. Open `dist/index.html`. Confirm the pitch, three options, score and scenario appear.
