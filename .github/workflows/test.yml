@@ -1,4 +1,4 @@
-name: Test soccer decision logic
+name: Verify decision logic
 on:
   push:
     branches: [main]
@@ -11,5 +11,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Run eight tests
-        run: node --test tests/game.test.js
+      - name: Run both logic test suites
+        run: node --test tests/*.test.js

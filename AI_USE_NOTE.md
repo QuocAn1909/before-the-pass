@@ -1,25 +1,21 @@
-# AI Use Note — AI 101 Midterm
+# AI Use Note — Before the Pass
 
-**Project:** Before the Pass — Soccer Decision Lab  
-**Student:** An Le  
-**AI tool:** OpenAI ChatGPT (GPT-6)
+**Student:** An Le | **Class:** AI 101 | **Tool:** OpenAI ChatGPT (GPT-6)
 
-## Purpose
-ChatGPT assisted with the prototype's HTML/CSS/JavaScript, soccer-situation wording, role-filtering and context-scoring logic, documentation, and the improvement that reveals reasoning immediately after each choice. There is no live AI API in the app.
+## Purpose and use
+ChatGPT generated and revised HTML, CSS and JavaScript for an original, small soccer decision simulation. It also assisted with tests, README, tactical feedback and GitHub issue/PR tracking. No live AI API is used in the website itself.
 
-## Representative prompts / instructions
-- "Build a useful AI-assisted prototype for beginner college soccer players to practice match decisions."
-- "Add choices for striker, midfielder and defender and compare decisions while leading versus trailing."
-- "Show why each chosen action earns its score, not only the points."
-- "Create a README, issue/PR evidence, and at least five tests with an edge case."
+## Representative requests
+- "Make the interface look better — the typography is not good."
+- "After the decision, animate the pass and defenders closing in."
+- "Remove multiple-choice answers; let users type a decision, then move the ball and players appropriately."
+- "If a cross reaches a teammate, ask for the next decision, such as shoot or pass. Continue until a goal, a safe full-time result, or the play ends."
 
-These summarize development instructions and are not a verbatim transcript of every prompt.
+## Student contribution / review
+The student proposed the free-text input, live pitch movement, soccer ball and jersey markers, cascading decisions, and example of a cross followed by a shot. ChatGPT translated those requests into a deterministic rule-based prototype. The student must inspect the code, play scenarios in a browser, capture before/after screenshots, and document any personal edits rather than claiming edits not performed.
 
-## Student contribution / changes
-The project direction is based on the student's interest in soccer. The student chose the audience and learning goal; the repository uses static files that can be read and changed. The student must review the generated code and explanations, run the browser exercises, and record any adjustments they actually make before submitting. Do not claim independent student edits that were not performed.
+## Verification and changes
+Previous interface showed three predefined choices. Updated interface uses typed commands, animated SVG movement, time and outcome tracking. Source-level JavaScript checks for the new engine were executed during development; refer to TEST_LOG.md for scope and limitations. Browser screenshots and visual validation are still required before submission.
 
-## Verification
-The source includes a Node.js test suite for core game-state rules and a browser checklist in `TEST_LOG.md`. Run `node --test tests/game.test.js` locally and record your observed output. Browser checks and screenshots require a real browser and should be completed by the student. Automated state tests do not prove that the entire browser interface is visually correct.
-
-## Limitations and responsible use
-AI-generated scenario evaluations are **illustrative opinions**, not verified soccer coaching advice. A different play may be reasonable depending on player ability, tactics and movement. No personal data is stored or sent to any service.
+## Safety / limitations
+The command interpreter is a limited keyword parser and may misunderstand natural language or reject unfamiliar commands. Scoring/football outcomes are scripted simplifications, not professional tactical advice or match predictions. No personal data is collected or sent to AI APIs.

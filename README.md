@@ -1,46 +1,34 @@
-# Before the Pass — Soccer Decision Lab
+# Before the Pass — Interactive Soccer Decision Lab
 
-**AI 101 Midterm Project | An Le | October 2026**
+**AI 101 Midterm | An Le | October 2026**
 
-**Audience:** Beginner college soccer players. **Need:** Practice choosing a soccer action when the match score changes the risk/reward balance.
+## Audience and need
+Beginner college soccer players need a safe way to rehearse game decisions under time pressure. This is a **rule-based teaching prototype**, not a real-time coaching system.
 
-## What it does
-1. **Position filter:** Practice as a striker, midfielder, defender, or all roles.
-2. **Paired late-match decisions:** View a simple pitch diagram, select one of three plays, get 0–2 context-fit points and an explanation. Every setup appears once while leading and once while trailing.
-3. **Review and replay:** Read your session score and round-by-round explanations; restart or change role.
-
-The examples are original simplified teaching cases, **not** tactical predictions or coach-validated recommendations. No live AI API is used.
+## Three features
+1. **Set the scene:** Choose Striker / Midfielder / Defender, one of two scenarios, and whether you're leading 1–0 or trailing 0–1 with 55 seconds remaining.
+2. **Type a decision and watch it happen:** No A/B/C answers. Enter commands in English or Vietnamese. The ball and shirt-shaped players animate, defenders shift to pressure the ball, and possession changes after a completed pass. Try “cross into the box”, “pass wide”, “pass back”, “shoot”, “dribble”, “hold”, “căn ngang”, “chuyền vào trong”, “sút”.
+3. **Chain decisions:** After a pass, direct the receiver's next action. A scenario ends on a goal, loss of possession or full time. Play-by-play commentary records the sequence.
 
 ## Run
-Open `dist/index.html` in a modern browser. No installation, account, backend or internet required.
-
-Alternatively: from the repository root run `python -m http.server 8000 -d dist` then visit `http://localhost:8000`.
+Open `dist/index.html` in a modern browser, or run `python -m http.server 8000 -d dist` and visit http://localhost:8000. No account, API key, build step or server logic required. Google Fonts enhance typography when online; fallback fonts work offline.
 
 ## Tests
-Install Node.js (18+ recommended), then run:
-```
-node --test tests/game.test.js
-```
-See [TEST_LOG.md](TEST_LOG.md) for recorded tests and the manual browser checklist.
+Run `node --test tests/*.test.js` using Node.js 18+ to run the original and new test suites. See [TEST_LOG.md](TEST_LOG.md). Browser-based animation and mobile-layout checks are still necessary.
 
-## Improvement / version history
-- Before: Selecting an option showed only a numeric point result. The explanation existed in data but was not displayed on the decision screen.
-- After: Selecting an option also shows the chosen action and **context-specific explanation** before advancing.
-- Tracked by [Issue #2](https://github.com/QuocAn1909/before-the-pass/issues/2) and its linked pull request.
+## Issue and PR history
+- [Issue #2](https://github.com/QuocAn1909/before-the-pass/issues/2): Explain feedback after each choice (previous prototype).
+- [PR #3](https://github.com/QuocAn1909/before-the-pass/pull/3): Merged previous improvement.
+- [Issue #4](https://github.com/QuocAn1909/before-the-pass/issues/4): New free-text animated multi-decision experience.
 
-## File guide
-- `dist/index.html` — page structure.
-- `dist/style.css` — responsive layout.
-- `dist/data.js` — six original scenarios, paired into twelve rounds across roles.
-- `dist/game.js` — score and progression logic.
-- `dist/app.js` — browser rendering and interactions.
-- `tests/game.test.js` — automated core behavior checks.
-- `AI_USE_NOTE.md` — AI disclosure.
-- `TEST_LOG.md` — tests and verification.
-- `SCREENSHOTS.md` — before/after evidence instructions.
+## Source
+- `dist/index.html` — new interface.
+- `dist/style.css` — visual system, responsive layout, fonts.
+- `dist/live.js` — SVG field rendering, ball/player animation and browser UI.
+- `dist/engine.js` — command parser and deterministic game logic.
+- `dist/data.js` — original role-specific situations and starting pitch positions.
+- `tests/simulation.test.js` — command parser, chained decisions, failure and time-out cases.
+- `dist/app.js`, `dist/game.js`, `tests/game.test.js` — archived source/tests for earlier version; not loaded by current page.
 
-## Known limitations
-- Simplified fixed situations, two possible score contexts, and three options per scenario.
-- Not a real match simulator; no coaching or real-world player tracking.
-- Scores are illustrative, not an assessment of soccer skill.
-- No saving after refresh; browsers must support modern JavaScript and the `dialog` element.
+## Limitations
+The parser recognizes a fixed vocabulary and does not understand every human instruction. Movement and scoring use simplified deterministic rules, not physics or a live AI model. There are no goalkeeper mechanics or full team simulations. Possession loss ends the current attacking sequence; outcomes depend on handcrafted rules and are not realistic match forecasts. Time advances per action rather than by real-world seconds. No live data, accounts or analytics. The current match state resets on refresh.
