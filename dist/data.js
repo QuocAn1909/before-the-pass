@@ -33,3 +33,5 @@ SCENARIOS.push(
 {id:'penalty-kick',kind:'penalty',role:'Striker',title:'The penalty spot.',subtitle:'One chance from twelve yards. Choose where to shoot — left, right or center.',you:[50,17],mates:[[35,40],[65,40]],opponents:[[30,24],[70,24],[50,5]],options:[]},
 {id:'defensive-recovery',kind:'open',role:'Defender',title:'A defender makes the run.',subtitle:'You control the ball while your teammate needs to push into space. Call the runner and pick your next pass.',you:[37,72],mates:[[60,58],[26,61]],opponents:[[43,51],[73,48],[51,35]],options:[]}
 );
+
+SCENARIOS.push({id:'wing-free-kick',kind:'freekick',role:'Midfielder',title:'Wide free kick delivery.',subtitle:'You have a free kick from a wide position. Send a cross into the box or ask teammates to run first.',you:[81,34],mates:[[47,22],[61,27]],opponents:[[51,16],[68,16],[55,31]],options:[]});
