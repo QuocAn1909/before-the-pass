@@ -6,7 +6,7 @@ test('Unknown command does not consume time',()=>{const s=Engine.create(one('str
 test('Cross moves ball to receiver and allows another action',()=>{const s=Engine.create(one('striker-wide'),'trail');const r=Engine.play(s,'cross inside');assert.equal(r.event,'pass');assert.notEqual(s.owner,'you');assert.equal(s.turn,1);assert.equal(s.finished,false);});
 test('Receiver can shoot and score after a cross',()=>{const s=Engine.create(one('striker-wide'),'trail');Engine.play(s,'cross inside');const result=Engine.play(s,'shoot');assert.equal(result.event,'goal');assert.equal(s.score[0],1);assert.equal(s.finished,true);});
 test('Shot from deep loses possession',()=>{const s=Engine.create(one('defender-outlet'),'trail');assert.equal(Engine.play(s,'shoot').event,'turnover');assert.equal(s.finished,true);});
-test('Holding runs down time to final whistle',()=>{const s=Engine.create(one('striker-wide'),'lead');Engine.play(s,'hold');Engine.play(s,'hold');Engine.play(s,'hold');assert.equal(s.clock,1);const r=Engine.play(s,'hold');assert.equal(r.event,'fulltime');assert.equal(s.clock,0);assert.equal(s.finished,true);});
+test('Holding does not artificially advance the real-time clock',()=>{const s=Engine.create(scenarios.find(x=>x.id==='striker-wide'),'lead');Engine.play(s,'hold');assert.equal(s.clock,55);});
 test('End state rejects further commands',()=>{const s=Engine.create(one('defender-outlet'),'trail');Engine.play(s,'shoot');assert.equal(Engine.play(s,'pass back').ok,false);});
 
 test('Pass to named player #2, never silently player #1',()=>{
@@ -35,3 +35,8 @@ test('Set-piece scenes: corner, free kick and penalty',()=>{
  const s=Engine.create(scenarios.find(s=>s.kind==='penalty'),'trail');
  assert.equal(Engine.play(s,'shoot left').event,'goal');
 });
+
+test('Player #10 advances toward goal with the ball',()=>{const s=Engine.create(scenarios.find(x=>x.id==='striker-channel'),'trail');const y=s.ball[1];const r=Engine.play(s,'number 10 get closer to the goal');assert.equal(r.event,'dribble');assert.ok(s.ball[1]<y);});
+test('Inside-box aimed shot scores when directed inside the posts',()=>{const s=Engine.create(scenarios.find(x=>x.id==='penalty-kick'),'trail');const r=Engine.play(s,'shoot',{x:49});assert.equal(r.event,'goal');assert.equal(s.ball[1],3);});
+test('Outside shot wide finishes wide, not as a block at goal',()=>{const s=Engine.create(scenarios.find(x=>x.id==='defender-outlet'),'trail');const r=Engine.play(s,'shoot',{x:92});assert.equal(r.event,'turnover');assert.match(r.text,/WIDE/);assert.equal(s.ball[0],92);});
+test('New wide free kick scenario exists',()=>assert.ok(scenarios.some(s=>s.id==='wing-free-kick')));

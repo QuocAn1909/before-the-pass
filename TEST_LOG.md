@@ -27,3 +27,6 @@ Do not represent unverified browser checks as passed.
 
 ## Follow-up checks (October 22, 2026)
 Additional JavaScript-runtime checks passed for exact recipient #2, off-ball run by #1, subsequent pass to #1, and presence of corner/free-kick/penalty scenarios. Browser animation and GitHub Actions results remain unverified.
+
+## Latest change — aimed shots and clock
+Source-level tests: number 10 runs toward goal PASS; aimed penalty goal PASS; wide shot stops wide PASS; additional free kick exists PASS; actions no longer deduct simulated seconds PASS. Browser dragging, goalkeeper movement, and actual second-by-second clock still need manual testing.
