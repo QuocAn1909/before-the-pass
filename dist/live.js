@@ -2,7 +2,7 @@ const $=id=>document.getElementById(id);
 let game,busy=false;
 const SVG='http://www.w3.org/2000/svg';
 const node=(tag,attrs={})=>{const x=document.createElementNS(SVG,tag);for(const [k,v] of Object.entries(attrs))x.setAttribute(k,v);return x;};
-const ms=(s)=>'89:'+String(60-s).padStart(2,'0');
+const ms=(s)=>s===0?'90:00':'89:'+String(60-s).padStart(2,'0');
 function setupScenarios(){
  const role=$('role').value;
  const selected=SCENARIOS.filter(s=>s.role===role);
