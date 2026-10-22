@@ -19,3 +19,6 @@ Previous interface showed three predefined choices. Updated interface uses typed
 
 ## Safety / limitations
 The command interpreter is a limited keyword parser and may misunderstand natural language or reject unfamiliar commands. Scoring/football outcomes are scripted simplifications, not professional tactical advice or match predictions. No personal data is collected or sent to AI APIs.
+
+## Follow-up improvement
+After user feedback, ChatGPT corrected the wrong-recipient bug by resolving exact shirt numbers, added instructions for teammates running off the ball, added corner/free-kick/penalty/defensive recovery scenes, and improved animation by interpolating actual positions. This is still a limited rules-based game, not general language understanding.
