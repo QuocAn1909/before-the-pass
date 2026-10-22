@@ -27,7 +27,7 @@ function answer(choice){
  $('score').textContent=`${state.score} PTS`;
  $('choices').querySelectorAll('button').forEach((b,i)=>{b.disabled=true;b.classList.toggle('selected',i===choice);});
  $('feedback').hidden=false;
- $('feedback').innerHTML=`<div class="feedback-label">${result.points}/2 CONTEXT-FIT POINTS</div>`;
+ $('feedback').innerHTML=`<div class="feedback-label">${result.points}/2 CONTEXT-FIT POINTS</div><p><strong>Your play:</strong> ${s.options[choice].label}</p><p>${result.text}</p>`;
  $('next').hidden=false;
  $('next').textContent=state.index===state.rounds.length-1?'See your review →':state.rounds[state.index+1].scenario.id===s.id?'Same play, different score →':'Next situation →';
  $('roundHint').textContent='Your answer is locked.';
