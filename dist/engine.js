@@ -82,7 +82,7 @@
   return complete(s,out,cost);
  }
  function complete(s,out,cost){
-  s.clock=Math.max(0,s.clock-cost);s.turn++;
+  s.turn++;
   if(out.event==='pass'||out.event==='dribble'||out.event==='hold'||out.event==='run')s.ball=[...out.to];
   if(out.event==='goal'){s.score[0]++;s.ball=[...out.to];s.finished=true;s.result='GOAL — You score!'}
   if(out.event==='turnover'){s.ball=[...out.to];s.finished=true;s.result='POSSESSION LOST — The move ends.'}
