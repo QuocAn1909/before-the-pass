@@ -4,13 +4,13 @@
  function interpret(raw){
   const s=norm(raw);if(!s)return {type:'unknown',reason:'Enter your instruction.'};
   const jersey=s.match(/(?:#|number\s*|no\s*|so\s*|ao\s*|player\s*|cau thu\s*)([0-9]{1,2})\b/);
-  const named=jersey?Number(jersey[1]):null;
-  const target=has(s,/\b(back|behind|lai|ve sau|ho tro)\b/)?'back':has(s,/\b(wide|wing|flank|bien|canh|right|left)\b/)?'wide':'inside';
+  const keeperTarget=/\b(goalkeeper|keeper|goalie|thu mon|gk)\b/.test(s);const named=jersey?Number(jersey[1]):(keeperTarget?1:null);
+  const target=has(s,/\b(back|behind|lai|ve sau|ve thu mon|ho tro|keeper|goalkeeper|gk|thu mon)\b/)?'back':has(s,/\b(wide|wing|flank|bien|canh|right|left)\b/)?'wide':'inside';
   if(has(s,/\b(run|move|make a run|di chuyen|chay cho|bam bien|overlap|get into|vao vong cam|into the box|len vong cam|cut inside|chay len|get closer|closer to|approach|advance|move up|push up|move forward)\b/) &&
      (named!==null || has(s,/\b(player|teammate|dong doi|cau thu|he|him|number|so|ao)\b/)))return {type:'run',jersey:named,target:has(s,/\b(box|vong cam|inside|vao trong|trung lo|giua)\b/)?'box':target};
   if(has(s,/\b(shoot|shot|finish|strike|sut|da vao|ghi ban|volley|penalty kick|da phat den)\b/))return {type:'shoot',style:has(s,/\b(left|trai)\b/)?'left':has(s,/\b(right|phai)\b/)?'right':'center'};
-  if(has(s,/\b(cross|cut back|cutback|square|can ngang|tat bong|chuyen ngang|pass|through|lay off|layback|chuyen|feed|play it|day bong|dua bong)\b/))return {type:'pass',jersey:named,target};
-  if(has(s,/\b(run|dribble|carry|drive|re bong|dan bong|dot pha|chay|tang toc|tien len)\b/))return {type:'dribble'};
+  if(has(s,/\b(cross|cut back|cutback|square|can ngang|tat bong|chuyen ngang|pass|through|lay off|layback|chuyen|feed|play it|day bong|dua bong)\b/))return {type:'pass',jersey:named,target,keeper:keeperTarget};
+  if(has(s,/\b(run|dribble|carry|drive|re bong|dan bong|dot pha|chay|tang toc|tien len|beat|take on|skill|stepover|qua nguoi|lac nguoi|re qua)\b/))return {type:'dribble'};
   if(has(s,/\b(hold|wait|shield|keep|giu bong|cau gio|slow|cho|giu)\b/))return {type:'hold'};
   if(named!==null)return {type:'unknown',reason:'Tell me what player #'+named+' should do: pass to, run into the box, or shoot.'};
   return {type:'unknown',reason:'I could not interpret that instruction safely. Try “pass to #2”, “tell #1 to run into the box”, “cross”, “shoot left”, or “hold”.'};
@@ -18,12 +18,13 @@
  const dist=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]);
  const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
  function create(sc,context){
-  const players=[{id:'you',shirt:10,team:'home',pos:[...sc.you],name:'YOU'},...sc.mates.map((p,i)=>({id:'mate'+i,shirt:i+1,team:'home',pos:[...p],name:'#'+(i+1)})),...sc.opponents.map((p,i)=>({id:'opp'+i,shirt:i+1,team:'away',pos:[...p],name:'D'+(i+1)}))];
+  const players=[{id:'you',shirt:10,team:'home',pos:[...sc.you],name:'YOU'},...sc.mates.map((p,i)=>({id:'mate'+i,shirt:i+1,team:'home',pos:[...p],name:'#'+(i+1)})),{id:'keeper-home',shirt:1,team:'home',pos:[50,103],name:'GK'},...sc.opponents.map((p,i)=>({id:'opp'+i,shirt:i+1,team:'away',pos:[...p],name:'D'+(i+1)}))];
   return {scenario:sc,context,clock:55,score:context==='lead'?[1,0]:[0,1],players,owner:'you',ball:[...sc.you],turn:0,finished:false,history:[],result:''};
  }
  function pick(s,cmd,owner){
   const mates=s.players.filter(p=>p.team==='home'&&p.id!==owner.id);
-  if(cmd.jersey!==null){const exact=mates.find(p=>p.shirt===cmd.jersey);return exact||null}
+  if(cmd.keeper)return mates.find(p=>p.id==='keeper-home')||null;
+  if(cmd.jersey!==null){const exact=mates.find(p=>p.shirt===cmd.jersey&&p.id!=='keeper-home');return exact||null}
   return mates.slice().sort((a,b)=>{
    const rank=p=>cmd.target==='back'?-p.pos[1]:cmd.target==='wide'?-Math.abs(p.pos[0]-50):p.pos[1]+Math.abs(p.pos[0]-50)*.7;
    return rank(a)-rank(b);
@@ -74,7 +75,7 @@
    else {event='goal';to=[x,3];comment='GOAL! The goalkeeper dives but cannot reach the ball.';}
     } else if(cmd.type==='dribble'){
    cost=9;to=[clamp(from[0]+(from[0]<50?4:-4),8,92),Math.max(15,from[1]-17)];
-   event=pressure(to)<9?'turnover':'dribble';comment=event==='turnover'?'A defender makes the tackle.':'You carry the ball forward while teammates adjust.';
+   event=pressure(to)<5?'turnover':'dribble';comment=event==='turnover'?'The defender times the tackle.':'A quick change of direction beats the first defender — you carry into space!';
   } else {event='hold';cost=17;comment='You protect possession. The clock runs down.'}
   const out={ok:true,type:cmd.type,event,from,to,carrier:targetPlayer?.id||owner.id,text:comment};
   if(event==='pass')s.owner=targetPlayer.id;

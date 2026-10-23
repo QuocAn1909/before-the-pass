@@ -25,3 +25,6 @@ After user feedback, ChatGPT corrected the wrong-recipient bug by resolving exac
 
 ## User-directed revision: October 22
 The user reported mismatched block visuals, failed run language, requested mouse-drawn shot directions, a decorative diving goalkeeper and a real-time countdown. ChatGPT extended the rule-based engine and pitch display. There is no AI inference service: input is not guaranteed to be understood like ChatGPT. The student should verify behavior and screenshots in a browser before submitting.
+
+## October 23 revision
+The student requested a fan-made Manchester United academy layout, three navigation areas (decision practice, soccer skills, football rules), passing to a home goalkeeper, defender-beating dribbles and fixing accidental shot trajectories after moving the pointer. ChatGPT authored the edits and tests. This is still a rules-based simulation, not a general AI language model.

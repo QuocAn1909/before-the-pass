@@ -30,3 +30,6 @@ Additional JavaScript-runtime checks passed for exact recipient #2, off-ball run
 
 ## Latest change — aimed shots and clock
 Source-level tests: number 10 runs toward goal PASS; aimed penalty goal PASS; wide shot stops wide PASS; additional free kick exists PASS; actions no longer deduct simulated seconds PASS. Browser dragging, goalkeeper movement, and actual second-by-second clock still need manual testing.
+
+## Academy regression tests
+5 source-level JS assertions passed on Oct 23, 2026: keeper pass, exact outfield #1 pass, dribble recognition, number 10 forward movement, and presence of all three academy tabs. The same gameplay assertions are committed in `tests/academy.test.js`. Browser layout, live clock and mouse interactions still need visual QA.
