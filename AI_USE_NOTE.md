@@ -28,3 +28,6 @@ The user reported mismatched block visuals, failed run language, requested mouse
 
 ## October 23 revision
 The student requested a fan-made Manchester United academy layout, three navigation areas (decision practice, soccer skills, football rules), passing to a home goalkeeper, defender-beating dribbles and fixing accidental shot trajectories after moving the pointer. ChatGPT authored the edits and tests. This is still a rules-based simulation, not a general AI language model.
+
+## October 26 revision
+The student requested Real Madrid branding, exact Vietnamese jersey-directed passing, a 22-player pitch, formation selector, more thorough tutorials with English YouTube materials, and animated soccer-rule examples. ChatGPT implemented the layout, updated documents and source tests. Rule examples are simplified and require manual inspection prior to submitting as verified.
