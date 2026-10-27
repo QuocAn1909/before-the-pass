@@ -36,3 +36,6 @@ Source-level tests: number 10 runs toward goal PASS; aimed penalty goal PASS; wi
 
 ## October 26 targeted assertions
 Verified in JavaScript runtime: the 4-3-3 formation creates 22 players (11 each), goalkeeper has #1, and `pass số 2` assigns ball to shirt #2. Added Node regression suite `tests/formations.test.js`; Node test runner and browser animations still need verification.
+
+## October 26 11v11 source check
+Verified via JavaScript execution that all eight formation configurations create 22 total players and exact `pass số N` selects jersey N for N=2 through 9 and 11. New regression file: `tests/formation-regressions.test.js`. Browser appearance and animation remain unverified.
