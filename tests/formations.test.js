@@ -1,0 +1,5 @@
+const test=require('node:test'),assert=require('node:assert/strict');const F=require('../dist/formations.js');global.Formations=F;const E=require('../dist/engine.js'),scenes=require('../dist/data.js');
+test('eight formation options',()=>assert.equal(Object.keys(F.shapes).length,8));
+for(const name of Object.keys(F.shapes))test(name+' puts 11 players on each side',()=>{const s=E.create(scenes[0],'trail');E.applyFormation(s,name);assert.equal(s.players.length,22);assert.equal(s.players.filter(p=>p.team==='home').length,11);assert.equal(s.players.filter(p=>p.team==='away').length,11);});
+test('Vietnamese pass số 2 goes to shirt number 2',()=>{const s=E.create(scenes[0],'trail');E.applyFormation(s,'4-3-3');assert.equal(E.play(s,'pass số 2').event,'pass');assert.equal(s.players.find(p=>p.id===s.owner).shirt,2);});
+test('Keeper wearing #1 can receive ball',()=>{const s=E.create(scenes[0],'trail');E.applyFormation(s,'4-4-2');E.play(s,'pass to goalkeeper');assert.equal(s.owner,'keeper-home');assert.equal(s.players.find(p=>p.id===s.owner).shirt,1);});

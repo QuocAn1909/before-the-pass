@@ -23,7 +23,7 @@ function fieldBase(){
  const actors=node('g',{id:'actors'});svg.append(actors);
  for(const p of game.players){
   const g=node('g',{class:'player',id:'piece-'+p.id,transform:'translate('+p.pos[0]+' '+p.pos[1]+')'});
-  const jersey=node('path',{d:'M-3 -3 L-5.6 -.9 L-4.2 1.1 L-2.8 .4 L-2.8 4 L2.8 4 L2.8 .4 L4.2 1.1 L5.6 -.9 L3 -3 L1.5 -2.3 Q0 -1.1 -1.5 -2.3 Z',fill:p.team==='home'?'#d7ff74':'#ffaf81',stroke:p.team==='home'?'#1b3a24':'#562b24','stroke-width':'.5'});
+  const jersey=node('path',{d:'M-3 -3 L-5.6 -.9 L-4.2 1.1 L-2.8 .4 L-2.8 4 L2.8 4 L2.8 .4 L4.2 1.1 L5.6 -.9 L3 -3 L1.5 -2.3 Q0 -1.1 -1.5 -2.3 Z',fill:p.team==='home'?'#f3f3ef':'#e96a52',stroke:p.team==='home'?'#243e47':'#562b24','stroke-width':'.5'});
   g.append(node('ellipse',{cx:0,cy:5.8,rx:3.6,ry:1.1,fill:'#0e3220',opacity:.45}),jersey);
   const t=node('text',{x:0,y:1.7,'text-anchor':'middle','font-size':'2.8','font-family':'Arial','font-weight':'bold',fill:'#14271e'});t.textContent=String(p.shirt);g.append(t);actors.append(g);
  }
@@ -73,6 +73,7 @@ function loadSelected(){
  clearInterval(timer);epoch++;busy=false;aim=null;aiming=false;
  const list=SCENARIOS.filter(s=>s.role===$('role').value);
  game=SoccerEngine.create(list[Number($('scenario').value)||0],$('context').value);
+ SoccerEngine.applyFormation(game,$('formation').value);
  $('title').textContent=game.scenario.title.toUpperCase();
  $('description').textContent=game.scenario.subtitle+' '+(game.context==='lead'?'Protect your one-goal lead.':'You need an equalizer.');
  $('roleTag').textContent='MATCH MOMENT / '+game.scenario.role.toUpperCase();
@@ -114,6 +115,7 @@ async function submit(e){
  $('status').textContent=(game.players.find(p=>p.id===game.owner)?.name||'YOU')+' CONTROLS THE BALL — YOUR NEXT DECISION';
  $('command').disabled=false;$('go').disabled=false;$('command').value='';$('command').focus();
 }
+$('formation').addEventListener('change',loadSelected);
 $('role').addEventListener('change',begin);
 $('context').addEventListener('change',loadSelected);
 $('scenario').addEventListener('change',loadSelected);

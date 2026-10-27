@@ -13,3 +13,18 @@
 .lesson-grid article p,.law-note{line-height:1.8;font-size:14px;color:#bed1c1;max-width:580px}
 [hidden]{display:none!important}
 @media(max-width:620px){.lesson-grid{grid-template-columns:1fr}.academy-tab{font-size:17px;padding:12px}.academy-page{padding:32px 0}}
+
+/* Madrid-inspired 11v11 academy */
+:root{--lime:#f2e0a3;--orange:#f47e6a}
+.logo-sign{color:#d3b36b}.academy-tab.active{background:#f0f2ed;color:#17273d;border-color:#d4ac6b}
+.teams div:first-child{color:#fff}.pitch-card{padding:18px 18px 12px}#field{max-height:720px;width:100%}
+.keeper-icon{color:#54a8ff}
+.academy-page a{color:#efce8b;text-decoration:underline;text-underline-offset:3px}
+.rule-sim{margin:35px 0;background:#10261d;border:1px solid #446d51;padding:24px}
+.rule-sim h3{font-family:"Barlow Condensed",Impact,sans-serif;font-size:38px;margin:0 0 18px}
+.rule-controls{display:flex;gap:9px;flex-wrap:wrap}.rule-controls button{border:1px solid #5a765b;background:#1a3827;padding:12px 14px;font-weight:800;color:#e4f2e9;cursor:pointer}
+.rule-controls button.active{background:#d9b775;color:#172319}
+#rulesField{display:block;width:100%;max-width:820px;margin:25px auto;aspect-ratio:10/7}
+#ruleText{font-size:15px;line-height:1.7;color:#e0ede2}
+.lesson-grid article p{font-size:15px;line-height:1.9}
+@media(min-width:1100px){.columns{grid-template-columns:minmax(0,1.32fr) minmax(0,.88fr)}}
