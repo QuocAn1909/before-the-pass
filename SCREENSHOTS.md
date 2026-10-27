@@ -3,10 +3,16 @@
 Screenshots must be genuine. **No before/after image is claimed or fabricated here.**
 
 ## Required screenshots
-1. BEFORE: old version's numbered-player command error, with browser UI and input visible.
-2. AFTER: latest version, run `num 7 run to the box`, with player #7's changed position.
-3. Supporting: example of Soccer Rules showing the passer (P), receiver (R), defenders (D) and ball.
-4. Supporting: Touchline home page and selectable scenarios.
+## Before and After Evidence
+
+- Before: evidence/before.png
+- After: evidence/after.png
+
+Issue: The game passed the ball to the wrong player.
+
+Fix: Updated the command parser to recognize the correct jersey number.
+
+Result: The ball was passed to the requested player.
 
 Save images in an `evidence/` folder or attach them in Canvas. Add exact file paths or links to this file when screenshots are actually captured.
 
