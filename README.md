@@ -47,3 +47,12 @@ Title: **The Complete Soccer Academy**. Updated the formation layout to place de
 
 ## Touchline update
 Product-facing name is **Touchline**. A numbered off-ball run such as `num 7 run to the box` now moves the intended player while possession stays with the ball carrier. The Soccer Rules SVG includes a visually identified passer (P), receiver (R), defenders (D1/D2) and an animated pass line. The skill lessons show animated stick figures for stepovers, body feints and sole rolls. This is a rule-based demonstration, not unrestricted natural-language AI or motion-captured instruction.
+
+
+## AI 101 midterm submission and deployment
+- Public app title: **Touchline**. This project keeps the historical GitHub repository name `before-the-pass`.
+- Run locally: download/extract full ZIP and open `dist/index.html`.
+- Deployment workflow: `.github/workflows/pages.yml` publishes `dist/` to GitHub Pages when Pages is configured with **GitHub Actions** as source. Check the workflow run and actual Pages URL; no live-deployment success is implied by committing this YAML.
+- Instructor evidence: `AGENTS.md`, `TASK.md`, `AI_USE.md`, `TEST_LOG.md`, `SCREENSHOTS.md`, `SUBMISSION_CHECKLIST.md`.
+- See `PROJECT_INSTRUCTIONS.md` for browser AI-chat instructions.
+- Important: source tests and PRs do not prove user-facing browser behavior; complete the honest manual test sheet and attach actual screenshots before submitting.

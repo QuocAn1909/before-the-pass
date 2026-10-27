@@ -1,9 +1,16 @@
-# Screenshots needed for AI 101 submission
+# Screenshot evidence — Touchline
 
-1. **Before** — Open an older commit (such as before Issue #4), capture the multiple-choice interface.
-2. **After — initial view** — Capture new typography, field, and free-text decision input.
-3. **After — chain** — Choose striker scenario “One more touch?”, trailing 0–1; type `cross inside`, capture player receiving the ball and next command box.
-4. **After — result** — Type `shoot` and capture GOAL / result panel.
-5. **GitHub evidence** — Capture Issue #4 and its related PR with merge status.
+Screenshots must be genuine. **No before/after image is claimed or fabricated here.**
 
-Store screenshots under `screenshots/` or upload alongside the project ZIP. These images are not captured automatically.
+## Required screenshots
+1. BEFORE: old version's numbered-player command error, with browser UI and input visible.
+2. AFTER: latest version, run `num 7 run to the box`, with player #7's changed position.
+3. Supporting: example of Soccer Rules showing the passer (P), receiver (R), defenders (D) and ball.
+4. Supporting: Touchline home page and selectable scenarios.
+
+Save images in an `evidence/` folder or attach them in Canvas. Add exact file paths or links to this file when screenshots are actually captured.
+
+## GitHub revision evidence
+- [Issue #16](https://github.com/QuocAn1909/before-the-pass/issues/16)
+- [PR #17](https://github.com/QuocAn1909/before-the-pass/pull/17)
+- The PR contains a real version change, but is not itself a substitute for visual browser screenshots.

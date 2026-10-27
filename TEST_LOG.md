@@ -39,3 +39,20 @@ Verified in JavaScript runtime: the 4-3-3 formation creates 22 players (11 each)
 
 ## October 26 11v11 source check
 Verified via JavaScript execution that all eight formation configurations create 22 total players and exact `pass số N` selects jersey N for N=2 through 9 and 11. New regression file: `tests/formation-regressions.test.js`. Browser appearance and animation remain unverified.
+
+
+## Manual browser verification sheet — October 26, 2026
+**Instructions:** Open the deployed website or extracted `dist/index.html`; enter what you actually observe in Actual and set Result only after testing. Source-level assertions are NOT replacements.
+
+| Test | Steps | Expected | Actual | Result |
+| --- | --- | --- | --- | --- |
+| M1 Normal run | Start a scenario; enter `num 7 run to the box` | #7 moves toward penalty area, ball remains with carrier | Not observed in browser yet | NOT RUN |
+| M2 Exact pass | Start a fresh play; enter `pass số 4` | Ball goes to jersey #4, not #9 | Not observed in browser yet | NOT RUN |
+| M3 Empty input | Submit with no instruction | Nothing changes; user is prompted for input | Not observed in browser yet | NOT RUN |
+| M4 Repeat | In a fresh play, run then pass then dribble | Correct sequential possession/movement | Not observed in browser yet | NOT RUN |
+| M5 Keyboard | Use Tab to reach input and Enter to play | Command can be submitted without mouse | Not observed in browser yet | NOT RUN |
+| M6 Small screen | Set browser viewport ~375px | Input and pitch usable without clipped controls | Not observed in browser yet | NOT RUN |
+| M7 Soccer Rules | Choose Offside then Onside | Passer, receiver and two defenders shown; contrasting positions | Not observed in browser yet | NOT RUN |
+| M8 Edge case | Enter `pass số 99` | Clear error, no silent pass to another shirt | Not observed in browser yet | NOT RUN |
+
+**Screenshot reminder:** Save genuine before/after images under `evidence/` and describe the bug and fix.
