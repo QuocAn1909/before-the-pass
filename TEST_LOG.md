@@ -46,13 +46,16 @@ Verified via JavaScript execution that all eight formation configurations create
 
 | Test | Steps | Expected | Actual | Result |
 | --- | --- | --- | --- | --- |
-| M1 Normal run | Start a scenario; enter `num 7 run to the box` | #7 moves toward penalty area, ball remains with carrier | Not observed in browser yet | NOT RUN |
-| M2 Exact pass | Start a fresh play; enter `pass số 4` | Ball goes to jersey #4, not #9 | Not observed in browser yet | NOT RUN |
-| M3 Empty input | Submit with no instruction | Nothing changes; user is prompted for input | Not observed in browser yet | NOT RUN |
-| M4 Repeat | In a fresh play, run then pass then dribble | Correct sequential possession/movement | Not observed in browser yet | NOT RUN |
-| M5 Keyboard | Use Tab to reach input and Enter to play | Command can be submitted without mouse | Not observed in browser yet | NOT RUN |
-| M6 Small screen | Set browser viewport ~375px | Input and pitch usable without clipped controls | Not observed in browser yet | NOT RUN |
-| M7 Soccer Rules | Choose Offside then Onside | Passer, receiver and two defenders shown; contrasting positions | Not observed in browser yet | NOT RUN |
-| M8 Edge case | Enter `pass số 99` | Clear error, no silent pass to another shirt | Not observed in browser yet | NOT RUN |
+| M1 Normal run | Start a scenario; enter `num 7 run to the box` | #7 moves toward penalty area, ball remains with carrier | Player #7 did not run into the penalty area after the command. | FAIL |
+| M2 Exact pass | Start a fresh play; enter `pass số 4` | Ball goes to jersey #4, not #9 | The pass went to player #4 as expected. | PASS |
+| M3 Empty input | Submit with no instruction | Nothing changes; user is prompted for input | No unexpected game action occurred. | PASS |
+| M4 Repeat | In a fresh play, run then pass then dribble | Correct sequential possession/movement | User reported the repeated-action test passed. | PASS |
+| M5 Keyboard | Use Tab to reach input and Enter to play | Command can be submitted without mouse | Keyboard submission worked as expected. | PASS |
+| M6 Small screen | Set browser viewport ~375px | Input and pitch usable without clipped controls | User reported the small-screen test passed. | PASS |
+| M7 Soccer Rules | Choose Offside then Onside | Passer, receiver and two defenders shown; contrasting positions | The rules demonstration worked as expected. | PASS |
+| M8 Edge case | Enter `pass số 99` | Clear error, no silent pass to another shirt | The invalid jersey input was handled as expected. | PASS |
 
 **Screenshot reminder:** Save genuine before/after images under `evidence/` and describe the bug and fix.
+
+
+**Manual test update (student report, October 27, 2026):** The student reported that all eight browser tests passed except M1, where jersey #7 did not run to the box. The Actual statements summarize the student's report; detailed screenshots and independent browser verification are not included. M1 remains an unresolved FAIL pending a fix and retest.
