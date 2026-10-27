@@ -34,3 +34,6 @@ The student requested Real Madrid branding, exact Vietnamese jersey-directed pas
 
 ## October 26 follow-up
 The student reported incorrect formation rows, jersey overlap for the goalkeeper, accidental pass to a different shirt, and insufficient contextual positioning. ChatGPT revised formation coordinates and added source-level regression tests and rule/skill examples. Browser visual testing remains for the student to confirm, and the student should disclose AI generation.
+
+## Touchline revision
+The student asked to rename the website Touchline, fix `num 7 run to the box`, use human stick figures for skills and show a passer in soccer law diagrams. ChatGPT generated the code and source assertions; visual browser checks must still be performed by the student.
