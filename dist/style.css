@@ -41,3 +41,19 @@
 @keyframes rolling{0%,100%{transform:translateX(0)}50%{transform:translateX(45px)}}
 @keyframes ballrolling{0%,100%{transform:translateX(0) rotate(0)}50%{transform:translateX(36px) rotate(180deg)}}
 @media(max-width:960px){.columns{grid-template-columns:1fr}}
+
+/* Touchline: animated stick figures (whole body + independent kicking leg) */
+.stick-figure{height:auto;min-height:160px;padding:9px 16px;display:flex;flex-direction:column;align-items:center}
+.stick-figure svg{width:100%;max-width:320px;height:140px}
+.stick-body{animation:stick-sway 1.8s ease-in-out infinite;transform-origin:112px 70px}
+.stick-figure .moving-leg{animation:step-leg 1.8s ease-in-out infinite;transform-origin:112px 71px}
+.stick-figure.feint .stick-body{animation:body-feint 1.65s ease-in-out infinite}
+.stick-figure.roll .stick-ball{animation:roll-soccer-ball 1.8s ease-in-out infinite;transform-origin:144px 108px}
+.stick-figure.roll .moving-leg{animation:roll-leg 1.8s ease-in-out infinite}
+.motion-caption{font-size:11px;letter-spacing:1px;color:#badbc7;padding:4px 0}
+@keyframes stick-sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(5deg)}}
+@keyframes step-leg{0%,100%{transform:rotate(-24deg)}35%{transform:rotate(36deg) translateY(-8px)}70%{transform:rotate(-15deg) translateX(8px)}}
+@keyframes body-feint{0%,100%{transform:translateX(-5px) rotate(-10deg)}50%{transform:translateX(12px) rotate(12deg)}}
+@keyframes roll-soccer-ball{0%,100%{transform:translateX(0) rotate(0)}50%{transform:translateX(-26px) rotate(-110deg)}}
+@keyframes roll-leg{0%,100%{transform:rotate(0)}50%{transform:rotate(25deg) translateX(-18px)}}
+@media(prefers-reduced-motion:reduce){.stick-body,.stick-figure .moving-leg,.stick-ball{animation:none!important}}

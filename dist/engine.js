@@ -4,8 +4,9 @@
  function interpret(raw){
   const s=norm(raw);if(!s)return {type:'unknown',reason:'Enter your instruction.'};
   const jersey=s.match(/(?:#|number\s*|no\s*|so\s*|ao\s*|player\s*|cau thu\s*|pass\s*|chuyen\s*)([0-9]{1,2})\b/);
-  const keeperTarget=/\b(goalkeeper|keeper|goalie|thu mon|gk)\b/.test(s);const generic=s.match(/\b(?:so|number|shirt|player|ao|to)\s*([0-9]{1,2})\b/);const named=jersey?Number(jersey[1]):generic?Number(generic[1]):(keeperTarget?1:null);
-  const target=has(s,/\b(back|behind|lai|ve sau|ve thu mon|ho tro|keeper|goalkeeper|gk|thu mon)\b/)?'back':has(s,/\b(wide|wing|flank|bien|canh|right|left)\b/)?'wide':'inside';
+  const num=s.match(/\b(?:num|number|no|player|shirt|jersey|so|ao|cau thu)\s*#?\s*(\d{1,2})\b/) || s.match(/#(\d{1,2})\b/);
+  const keeperTarget=/\b(goalkeeper|keeper|goalie|thu mon|gk)\b/.test(s);const generic=s.match(/\b(?:so|number|shirt|player|ao|to)\s*([0-9]{1,2})\b/);const named=num?Number(num[1]):jersey?Number(jersey[1]):generic?Number(generic[1]):(keeperTarget?1:null);
+  const target=has(s,/\b(back|behind|lai|ve sau|ve thu mon|ho tro|keeper|goalkeeper|gk|thu mon|drop back)\b/)?'back':has(s,/\b(wide|wing|flank|bien|canh|right|left|overlap)\b/)?'wide':'inside';
   if(has(s,/\b(run|move|make a run|di chuyen|chay cho|bam bien|overlap|get into|vao vong cam|into the box|len vong cam|cut inside|chay len|get closer|closer to|approach|advance|move up|push up|move forward)\b/) &&
      (named!==null || has(s,/\b(player|teammate|dong doi|cau thu|he|him|number|so|ao)\b/)))return {type:'run',jersey:named,target:has(s,/\b(box|vong cam|inside|vao trong|trung lo|giua)\b/)?'box':target};
   if(has(s,/\b(shoot|shot|finish|strike|sut|da vao|ghi ban|volley|penalty kick|da phat den)\b/))return {type:'shoot',style:has(s,/\b(left|trai)\b/)?'left':has(s,/\b(right|phai)\b/)?'right':'center'};
@@ -41,7 +42,7 @@
    if(!targetPlayer)return {ok:false,message:'There is no player #'+cmd.jersey+' on your team.'};
    if(targetPlayer.id===owner.id){ const initial=[...owner.pos];owner.pos=[owner.pos[0],Math.max(12,owner.pos[1]-19)];s.ball=[...owner.pos];return complete(s,{ok:true,type:'dribble',event:'dribble',from:initial,to:[...owner.pos],carrier:owner.id,text:'Player #'+owner.shirt+' advances toward goal with the ball.'},0); }
    const start=[...targetPlayer.pos];
-   const dest=cmd.target==='box'?[clamp(targetPlayer.pos[0],35,65),clamp(targetPlayer.pos[1]-23,12,25)]:cmd.target==='wide'?[targetPlayer.pos[0]<50?15:85,Math.max(18,targetPlayer.pos[1]-16)]:[clamp(targetPlayer.pos[0],35,65),Math.max(17,targetPlayer.pos[1]-14)];
+   const dest=cmd.target==='box'?[clamp(targetPlayer.pos[0],35,65),Math.min(21,Math.max(11,targetPlayer.pos[1]-24))]:cmd.target==='wide'?[targetPlayer.pos[0]<50?15:85,Math.max(18,targetPlayer.pos[1]-16)]:[clamp(targetPlayer.pos[0],35,65),Math.max(17,targetPlayer.pos[1]-14)];
    targetPlayer.pos=dest;cost=6;event='run';
    comment='Player #'+targetPlayer.shirt+' makes a run '+(cmd.target==='box'?'into the penalty area':'into space')+'. The ball stays with '+owner.name+'. Your next decision?';
    to=[...s.ball];
