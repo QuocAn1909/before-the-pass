@@ -3,7 +3,7 @@
  const has=(s,r)=>r.test(s);
  function interpret(raw){
   const s=norm(raw);if(!s)return {type:'unknown',reason:'Enter your instruction.'};
-  const jersey=s.match(/(?:#|number\s*|no\s*|so\s*|ao\s*|player\s*|cau thu\s*)([0-9]{1,2})\b/);
+  const jersey=s.match(/(?:#|number\s*|no\s*|so\s*|ao\s*|player\s*|cau thu\s*|pass\s*|chuyen\s*)([0-9]{1,2})\b/);
   const keeperTarget=/\b(goalkeeper|keeper|goalie|thu mon|gk)\b/.test(s);const named=jersey?Number(jersey[1]):(keeperTarget?1:null);
   const target=has(s,/\b(back|behind|lai|ve sau|ve thu mon|ho tro|keeper|goalkeeper|gk|thu mon)\b/)?'back':has(s,/\b(wide|wing|flank|bien|canh|right|left)\b/)?'wide':'inside';
   if(has(s,/\b(run|move|make a run|di chuyen|chay cho|bam bien|overlap|get into|vao vong cam|into the box|len vong cam|cut inside|chay len|get closer|closer to|approach|advance|move up|push up|move forward)\b/) &&
@@ -94,6 +94,14 @@
   s.history.push({input:'',event:out.event,text:out.text,time:s.clock});
   return out;
  }
- const api={interpret,create,play,distance:dist};
+ function applyFormation(s,name){
+ if(!root.Formations) return s;
+ const ours=root.Formations.layout(name,true),theirs=root.Formations.layout(name,false);
+ const owner=s.players.find(p=>p.id===s.owner);
+ const home=ours.map((p,i)=>({id:p.shirt===1?'keeper-home':p.shirt===10?'you':'mate'+p.shirt,shirt:p.shirt,team:'home',pos:[p.x,p.y],name:p.shirt===1?'GK':'#'+p.shirt}));
+ const away=theirs.map(p=>({id:'opp'+p.shirt,shirt:p.shirt,team:'away',pos:[p.x,p.y],name:'D'+p.shirt}));
+ s.players=[...home,...away];s.owner=home.find(p=>p.shirt===10)?.id||home[0].id;s.ball=[...s.players.find(p=>p.id===s.owner).pos];return s;
+}
+ const api={interpret,create,play,applyFormation,distance:dist};
  if(typeof module!=='undefined')module.exports=api;root.SoccerEngine=api;
 })(typeof window!=='undefined'?window:globalThis);
