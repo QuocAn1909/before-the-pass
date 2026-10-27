@@ -33,3 +33,6 @@ Source-level tests: number 10 runs toward goal PASS; aimed penalty goal PASS; wi
 
 ## Academy regression tests
 5 source-level JS assertions passed on Oct 23, 2026: keeper pass, exact outfield #1 pass, dribble recognition, number 10 forward movement, and presence of all three academy tabs. The same gameplay assertions are committed in `tests/academy.test.js`. Browser layout, live clock and mouse interactions still need visual QA.
+
+## October 26 targeted assertions
+Verified in JavaScript runtime: the 4-3-3 formation creates 22 players (11 each), goalkeeper has #1, and `pass số 2` assigns ball to shirt #2. Added Node regression suite `tests/formations.test.js`; Node test runner and browser animations still need verification.
