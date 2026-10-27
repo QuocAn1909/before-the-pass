@@ -31,3 +31,6 @@ The student requested a fan-made Manchester United academy layout, three navigat
 
 ## October 26 revision
 The student requested Real Madrid branding, exact Vietnamese jersey-directed passing, a 22-player pitch, formation selector, more thorough tutorials with English YouTube materials, and animated soccer-rule examples. ChatGPT implemented the layout, updated documents and source tests. Rule examples are simplified and require manual inspection prior to submitting as verified.
+
+## October 26 follow-up
+The student reported incorrect formation rows, jersey overlap for the goalkeeper, accidental pass to a different shirt, and insufficient contextual positioning. ChatGPT revised formation coordinates and added source-level regression tests and rule/skill examples. Browser visual testing remains for the student to confirm, and the student should disclose AI generation.

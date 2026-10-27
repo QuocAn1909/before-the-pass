@@ -4,6 +4,8 @@ const cases={
  offside:{attacker:[67,26],defender:[58,30],ball:[33,44],pass:[67,26],text:'OFFSIDE: At the moment the teammate passes, the attacker is closer to the goal line than both the ball and the second-last defender. If involved in play, an indirect free kick is awarded.'},
  onside:{attacker:[51,26],defender:[58,30],ball:[33,44],pass:[51,26],text:'ONSIDE: The attacker is level with or behind the second-last opponent when the ball is played. The pass can continue.'},
  corner:{attacker:[93,7],defender:[56,25],ball:[93,7],pass:[50,15],text:'CORNER KICK: The defender touched the ball last before it went over the goal line. The ball is kicked from the corner arc.'},
+ throwin:{attacker:[7,40],defender:[46,28],ball:[7,40],pass:[27,28],text:'THROW-IN: When the ball crosses a touchline, the opponents of the player who last touched it restart with a throw-in.'},
+ goalkick:{attacker:[49,56],defender:[40,25],ball:[88,34],pass:[50,40],text:'GOAL KICK: If an attacker last touched the ball before it crossed the defenders’ goal line without a goal, the defending team restarts with a goal kick.'},
  penalty:{attacker:[50,48],defender:[50,10],ball:[50,44],pass:[50,6],text:'PENALTY KICK: After a qualifying direct-free-kick offense in the defending team’s penalty area, the attacking team shoots from the penalty spot.'}
 };
 function draw(which){
