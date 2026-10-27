@@ -44,3 +44,6 @@ Fan-made Real Madrid training mode: 11v11 pitch with 8 formations (4-3-3, 4-2-3-
 
 ## October 26 gameplay update
 Title: **The Complete Soccer Academy**. Updated the formation layout to place defenders closest to the team's own goal, midfielders in central zones and attackers forward, facing opposite ends for each team. All 22 players remain visible, with selected scenario actors repositioned into their scenario context. The opposing goalkeeper is rendered using the actual #1 jersey, not an oval. Added handball notes, throw-in and goal-kick rules, plus animated simplified step-over, body-feint and sole-roll drills. The field has more visual space. Passing to exact shirt numbers is tested for #2–#9 and #11. These are schematic movements, not a fully dynamic tactical physics engine.
+
+## Touchline update
+Product-facing name is **Touchline**. A numbered off-ball run such as `num 7 run to the box` now moves the intended player while possession stays with the ball carrier. The Soccer Rules SVG includes a visually identified passer (P), receiver (R), defenders (D1/D2) and an animated pass line. The skill lessons show animated stick figures for stepovers, body feints and sole rolls. This is a rule-based demonstration, not unrestricted natural-language AI or motion-captured instruction.
