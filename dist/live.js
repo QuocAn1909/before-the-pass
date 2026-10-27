@@ -32,9 +32,6 @@ function fieldBase(){
  ball.append(node('path',{d:'M0 -1.45 L1.35 -.4 L.85 1.12 L-.85 1.12 L-1.35 -.4 Z',fill:'#1a2625'}));
  for(let i=0;i<5;i++){const a=i*2*Math.PI/5;ball.append(node('circle',{cx:(2*Math.cos(a)).toFixed(2),cy:(2*Math.sin(a)).toFixed(2),r:.35,fill:'#233130'}));}
  svg.append(ball);
- const keeper=node('g',{id:'keeper',transform:'translate(50 7)'});
- keeper.append(node('path',{d:'M-3 -3 L-5 -1 L-3 1 L-2 4 L2 4 L3 1 L5 -1 L3 -3 Z',fill:'#57c5f0',stroke:'#092b3a','stroke-width':'.6'}));
- const number=node('text',{x:0,y:1,'text-anchor':'middle','font-size':3,fill:'#11384a'});number.textContent='1';keeper.append(number);svg.append(keeper);
  const arrow=node('path',{id:'aimLine',stroke:'#faffbb','stroke-width':'.9','stroke-dasharray':'2 1',fill:'none',visibility:'hidden'});svg.append(arrow);
  svg.addEventListener('pointerdown',startAim);svg.addEventListener('pointermove',moveAim);svg.addEventListener('pointerup',endAim);
  paintPossession();
@@ -102,7 +99,7 @@ async function submit(e){
  busy=true;const actionEpoch=epoch;$('go').disabled=true;$('command').disabled=true;
  $('status').textContent='PLAY IN MOTION…';
  $('commentaryText').textContent='The play unfolds…';
- if(shot){const k=$('keeper');if(k)k.setAttribute('transform','translate('+(aim&&aim.x<50?43:57)+' 9) rotate('+(aim&&aim.x<50?-52:52)+')');}
+ if(shot){const k=$('piece-opp1');if(k)k.setAttribute('transform','translate('+(aim&&aim.x<50?43:57)+' 9) rotate('+(aim&&aim.x<50?-52:52)+')');}
  await animatePlay(before,ballBefore);
  if(actionEpoch!==epoch)return;
  if(outcome.event==='pass'||outcome.event==='dribble'){ // Receiving player controls ball
