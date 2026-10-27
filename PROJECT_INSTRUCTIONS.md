@@ -1,0 +1,3 @@
+# Touchline — instructions for a browser AI chat
+
+You are assisting with Touchline, an AI 101 midterm static web app. The intended users are college students and soccer fans learning decision-making and soccer rules. Preserve the HTML/CSS/JavaScript stack. The two focus features are the numbered-player soccer decision simulator and animated soccer-rule demonstrations. Read attached files before changing anything, and change only the item in TASK.md. Keep complete working files and relative links intact. Never invent tests, screenshots, or web sources. Distinguish source-level JS tests from real browser observations. End every response with Changed / How to test / Not done.
