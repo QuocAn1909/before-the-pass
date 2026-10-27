@@ -33,8 +33,8 @@ function fieldBase(){
  for(let i=0;i<5;i++){const a=i*2*Math.PI/5;ball.append(node('circle',{cx:(2*Math.cos(a)).toFixed(2),cy:(2*Math.sin(a)).toFixed(2),r:.35,fill:'#233130'}));}
  svg.append(ball);
  const keeper=node('g',{id:'keeper',transform:'translate(50 7)'});
- keeper.append(node('ellipse',{cx:0,cy:0,rx:3,ry:4,fill:'#5fc5f5',stroke:'#092b3a','stroke-width':'.6'}));
- keeper.append(node('circle',{cx:0,cy:-2.5,r:1.3,fill:'#f1cd9d'}));svg.append(keeper);
+ keeper.append(node('path',{d:'M-3 -3 L-5 -1 L-3 1 L-2 4 L2 4 L3 1 L5 -1 L3 -3 Z',fill:'#57c5f0',stroke:'#092b3a','stroke-width':'.6'}));
+ const number=node('text',{x:0,y:1,'text-anchor':'middle','font-size':3,fill:'#11384a'});number.textContent='1';keeper.append(number);svg.append(keeper);
  const arrow=node('path',{id:'aimLine',stroke:'#faffbb','stroke-width':'.9','stroke-dasharray':'2 1',fill:'none',visibility:'hidden'});svg.append(arrow);
  svg.addEventListener('pointerdown',startAim);svg.addEventListener('pointermove',moveAim);svg.addEventListener('pointerup',endAim);
  paintPossession();
